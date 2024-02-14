@@ -7,7 +7,6 @@ using ControleDeContatos.Models;
 
 namespace ControleDeContatos.Repositorio
 {
-    //implementando interface
     public class UsuarioRepositorio : IUsuarioRepositorio
     {
         private readonly BancoContext _bancoContext;

@@ -7,7 +7,7 @@ using ControleDeContatos.Enums;
 
 namespace ControleDeContatos.Models
 {
-    public class UsuarioModel
+    public class UsuarioSemSenhaModel
     {
         public int Id { get; set; }
         
@@ -15,22 +15,16 @@ namespace ControleDeContatos.Models
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "Digite o login do usuário")]
-        public string Login { get; set; } //informado pelo usuário
+        public string Login { get; set; } 
         
         [Required(ErrorMessage = "Digite o email do usuário")]
         [EmailAddress(ErrorMessage = "O e-mail informado não é valido!")]
         public string Email { get; set; }
-    
+
 
         [Required(ErrorMessage = "Informe o perfil do usuário")]
-        public PerfilEnum Perfil { get; set; } //determina se é usuário padrão ou administrador
+        public PerfilEnum Perfil { get; set; } 
 
-        [Required(ErrorMessage = "Digite a senha do usuário")]
-        public string Senha { get; set; }
-
-        public DateTime DataCadastroUsuario { get; set; }
-
-        //sinal ? determina que a propriedade não é obrigatória (pode ser nulo)
         public DateTime? DataAtualizacaoUsuario { get; set; }
     }
 }
