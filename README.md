@@ -17,3 +17,6 @@ Esse projeto foi desenvolvido utilizando:
 - Adicionar, editar e remover contatos - com a verificação se as informações são válidas
 - Mensagens de sucesso e erro das ações realizadas pelo usuário
 - Paginação e filtro de busca de contatos
+- Cadastro de usuários, onde:
+    - Usuário padrão - acesso limitado ao sistema
+    - Usuário administrador - acesso total

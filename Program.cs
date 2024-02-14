@@ -12,6 +12,8 @@ builder.Services.AddDbContext<BancoContext>(o => o.UseSqlServer(configuration.Ge
 
 //ao interface ser invocada, terá a injeção de dependência
 builder.Services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
+builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
+
 
 var app = builder.Build();
 

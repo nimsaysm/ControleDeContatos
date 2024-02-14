@@ -17,5 +17,7 @@ namespace ControleDeContatos.Data
 
         //criando a tabela, importando ConatatoModel e definindo o nome da tabela como Contatos
         public DbSet<ContatoModel> Contatos { get; set; }
+
+        public DbSet<UsuarioModel> Usuarios { get; set; }
     }
 }

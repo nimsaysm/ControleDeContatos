@@ -3,7 +3,12 @@
 
 //iniciar o uso do plugin DataTable de busca e paginação de tabelas
 $(document).ready(function () {
-    $('#table-contatos').DataTable({
+    getDataTable('#table-contatos');
+    getDataTable('#table-usuarios');
+});
+
+function getDataTable(idTabela) {
+    $(idTabela).DataTable({
         "ordering": true,
         "paging": true,
         "searching": true,
@@ -31,7 +36,7 @@ $(document).ready(function () {
         }
         }
     });
-});
+}
 
 
 //quando clicar no close-alert
