@@ -32,5 +32,12 @@ namespace ControleDeContatos.Models
 
         //sinal ? determina que a propriedade não é obrigatória (pode ser nulo)
         public DateTime? DataAtualizacaoUsuario { get; set; }
+
+
+        public bool SenhaValida(string senha)
+        {
+            //compara Senha informada pelo usuário com a senha preenchida no login
+            return Senha == senha; //se for igual retornará True
+        }
     }
 }

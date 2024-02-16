@@ -20,3 +20,4 @@ Esse projeto foi desenvolvido utilizando:
 - Cadastro de usuários, onde:
     - Usuário padrão - acesso limitado ao sistema
     - Usuário administrador - acesso total
+- Login de usuários

@@ -8,6 +8,9 @@ namespace ControleDeContatos.Repositorio
 {
     public interface IUsuarioRepositorio
     {
+        //irá retornar a busca do login do tipo UsuarioModel
+        UsuarioModel BuscarPorLogin(string login);
+        
         UsuarioModel ListarPorId(int id);
 
         List<UsuarioModel> BuscarTodos();
