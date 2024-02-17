@@ -1,3 +1,4 @@
+using ControleDeContatos.Helper;
 using ControleDeContatos.Models;
 using ControleDeContatos.Repositorio;
 using Microsoft.AspNetCore.Mvc;
@@ -7,15 +8,28 @@ namespace ControleDeContatos.Controllers
     public class LoginController : Controller
     {
         private readonly IUsuarioRepositorio _usuarioRepositorio; //injetar UsuarioRepositorio na variavel privada _usuarioRepositorio
+        private readonly ISessao _sessao;
 
-        public LoginController(IUsuarioRepositorio usuarioRepositorio) 
+        public LoginController(IUsuarioRepositorio usuarioRepositorio,
+                                ISessao sessao) 
         {
             _usuarioRepositorio = usuarioRepositorio;
+            _sessao = sessao; //injeção de dependência do construtor
         }
 
         public IActionResult Index()
         {
+            //se o usuário já estiver logado, será direcionado para a Home, sem ser necessário entrar novamente
+            if(_sessao.BuscarSessaoDoUsuario() != null) return RedirectToAction("Index", "Home");
+
             return View();
+        }
+
+        public IActionResult SairDaSessaoUsuario()
+        {
+            _sessao.RemoverSessaoDoUsuario();
+            
+            return RedirectToAction("Index", "Login");
         }
 
         [HttpPost]
@@ -30,9 +44,10 @@ namespace ControleDeContatos.Controllers
 
                     if(usuario != null)
                     {
-                        //validação de senha
+                        //validação de senha e criação de sessão do usuário validado
                         if (usuario.SenhaValida(loginModel.Senha))
                         {
+                            _sessao.CriarSessaoDoUsuario(usuario);
                             return RedirectToAction("Index", "Home"); //ação Index da controller Home
                         }
                         

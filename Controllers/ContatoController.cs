@@ -1,15 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+using ControleDeContatos.Filters;
 using ControleDeContatos.Models;
 using ControleDeContatos.Repositorio;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace ControleDeContatos.Controllers
 {
+    //importando o filter de acesso dos usuários logados
+    [PaginaParaUsuarioLogado]
+
     public class ContatoController : Controller
     {
         // private readonly ILogger<Contato> _logger;

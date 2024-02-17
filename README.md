@@ -20,4 +20,6 @@ Esse projeto foi desenvolvido utilizando:
 - Cadastro de usuários, onde:
     - Usuário padrão - acesso limitado ao sistema
     - Usuário administrador - acesso total
-- Login de usuários
+- Login de usuários:
+    - Validação e sessão personalizada com o tipo de perfil
+    - Controle de acessos por tipo de perfil
