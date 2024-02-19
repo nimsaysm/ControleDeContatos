@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using ControleDeContatos.Enums;
+using ControleDeContatos.Helper;
 
 namespace ControleDeContatos.Models
 {
@@ -37,7 +38,14 @@ namespace ControleDeContatos.Models
         public bool SenhaValida(string senha)
         {
             //compara Senha informada pelo usuário com a senha preenchida no login
-            return Senha == senha; //se for igual retornará True
+            return Senha == senha.GerarHash(); //se for igual retornará True
+        }
+
+        //criptografar a senha
+        public void SetSenhaHash()
+        {
+            //senha que o usuário digitou = ela mesma criptografada
+            Senha = Senha.GerarHash();
         }
     }
 }

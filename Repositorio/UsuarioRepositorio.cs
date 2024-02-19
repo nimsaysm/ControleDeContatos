@@ -35,6 +35,7 @@ namespace ControleDeContatos.Repositorio
         public UsuarioModel Adicionar(UsuarioModel usuario)
         {
             usuario.DataCadastroUsuario = DateTime.Now;
+            usuario.SetSenhaHash(); //criptografar a senha
             _bancoContext.Usuarios.Add(usuario); 
             _bancoContext.SaveChanges();
             

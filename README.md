@@ -23,3 +23,4 @@ Esse projeto foi desenvolvido utilizando:
 - Login de usuários:
     - Validação e sessão personalizada com o tipo de perfil
     - Controle de acessos por tipo de perfil
+- Criptografia de senha do usuário
