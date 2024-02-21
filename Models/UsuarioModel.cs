@@ -47,5 +47,14 @@ namespace ControleDeContatos.Models
             //senha que o usuário digitou = ela mesma criptografada
             Senha = Senha.GerarHash();
         }
+
+        //gerar nova senha ao resetar na aplicação
+        public string GerarNovaSenha()
+        {
+            //novaSenha terá os 8 primeiros caracteres gerados
+            string novaSenha = Guid.NewGuid().ToString().Substring(0, 8);
+            Senha = novaSenha.GerarHash(); //senha com hash ficará no BD
+            return novaSenha; //senha sem hash que será enviada no e-mail
+        }
     }
 }

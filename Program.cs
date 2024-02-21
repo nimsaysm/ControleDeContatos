@@ -17,6 +17,10 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 //qual classe a interface de sessão irá instanciar
 builder.Services.AddScoped<ISessao, Sessao>();
 
+//para envio do email de recuperação de senha
+builder.Services.AddScoped<IEmail, Email>();
+
+
 //ao interface ser invocada, terá a injeção de dependência
 builder.Services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
 builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();

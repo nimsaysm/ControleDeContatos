@@ -10,6 +10,8 @@ namespace ControleDeContatos.Repositorio
     {
         //irá retornar a busca do login do tipo UsuarioModel
         UsuarioModel BuscarPorLogin(string login);
+
+        UsuarioModel BuscarPorEmailELogin(string email, string login); //para redefinição de senha
         
         UsuarioModel ListarPorId(int id);
 

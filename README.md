@@ -24,3 +24,4 @@ Esse projeto foi desenvolvido utilizando:
     - Validação e sessão personalizada com o tipo de perfil
     - Controle de acessos por tipo de perfil
 - Criptografia de senha do usuário
+- Redefinição de senha com envio de e-mail SMTP
