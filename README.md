@@ -19,9 +19,10 @@ Esse projeto foi desenvolvido utilizando:
 - Paginação e filtro de busca de contatos
 - Cadastro de usuários, onde:
     - Usuário padrão - acesso limitado ao sistema
-    - Usuário administrador - acesso total
+    - Usuário    administrador - acesso total
 - Login de usuários:
     - Validação e sessão personalizada com o tipo de perfil
     - Controle de acessos por tipo de perfil
 - Criptografia de senha do usuário
 - Redefinição de senha com envio de e-mail SMTP
+- Tela para alterar senha

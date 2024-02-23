@@ -48,6 +48,12 @@ namespace ControleDeContatos.Models
             Senha = Senha.GerarHash();
         }
 
+        //gerar nova senha para alteração de senha do usuário 
+        public void SetNovaSenha(string novaSenha)
+        {
+            Senha = novaSenha.GerarHash();
+        }
+
         //gerar nova senha ao resetar na aplicação
         public string GerarNovaSenha()
         {
