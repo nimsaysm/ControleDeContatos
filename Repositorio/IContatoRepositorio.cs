@@ -12,7 +12,7 @@ namespace ControleDeContatos.Repositorio
         ContatoModel ListarPorId(int id);
 
         //contrato para listar dados do BD
-        List<ContatoModel> BuscarTodos();
+        List<ContatoModel> BuscarTodos(int usuarioId);
 
         //Adicionar recebe contato como parâmetro e retorna ContatoModel 
         ContatoModel Adicionar(ContatoModel contato);

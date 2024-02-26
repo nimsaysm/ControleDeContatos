@@ -34,6 +34,8 @@ namespace ControleDeContatos.Models
         //sinal ? determina que a propriedade não é obrigatória (pode ser nulo)
         public DateTime? DataAtualizacaoUsuario { get; set; }
 
+        //lista -> 1 usuário tem vários contatos
+        public virtual List<ContatoModel> Contatos { get; set; }
 
         public bool SenhaValida(string senha)
         {

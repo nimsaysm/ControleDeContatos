@@ -1,4 +1,5 @@
 using ControleDeContatos.Filters;
+using ControleDeContatos.Helper;
 using ControleDeContatos.Models;
 using ControleDeContatos.Repositorio;
 using Microsoft.AspNetCore.Mvc;
@@ -10,24 +11,21 @@ namespace ControleDeContatos.Controllers
 
     public class ContatoController : Controller
     {
-        // private readonly ILogger<Contato> _logger;
-
-        // public Contato(ILogger<Contato> logger)
-        // {
-        //     _logger = logger;
-        // }
-
         private readonly IContatoRepositorio _contatoRepositorio;
+        private readonly ISessao _sessao;
 
-        public ContatoController(IContatoRepositorio contatoRepositorio)
+        public ContatoController(IContatoRepositorio contatoRepositorio,
+                                ISessao sessao)
         {
             _contatoRepositorio = contatoRepositorio;
+            _sessao = sessao;
         }
 
         public IActionResult Index()
         {
             //mostrará na interface Index registros do BD
-            List <ContatoModel> contatos = _contatoRepositorio.BuscarTodos();
+            UsuarioModel usuarioLogado = _sessao.BuscarSessaoDoUsuario();
+            List <ContatoModel> contatos = _contatoRepositorio.BuscarTodos(usuarioLogado.Id);
             return View(contatos);
         }
 
@@ -86,7 +84,10 @@ namespace ControleDeContatos.Controllers
                 //se a informação do Model (campos do forms) é válida
                 if(ModelState.IsValid)
                 {
-                    _contatoRepositorio.Adicionar(contato);
+                    UsuarioModel usuarioLogado = _sessao.BuscarSessaoDoUsuario(); //assim que criar, irá passar o usuário logado
+                    contato.UsuarioId = usuarioLogado.Id;
+                    
+                    contato = _contatoRepositorio.Adicionar(contato);
                     TempData["MensagemSucesso"] = "Contato cadastrado com sucesso"; //mensagem temporária de sucesso ao criar o contato
                     return RedirectToAction("Index"); //ação de voltar para a página Index
                 }
@@ -107,7 +108,11 @@ namespace ControleDeContatos.Controllers
             {
                 if(ModelState.IsValid)
                 {
-                    _contatoRepositorio.Atualizar(contato);
+
+                    UsuarioModel usuarioLogado = _sessao.BuscarSessaoDoUsuario();
+                    contato.UsuarioId = usuarioLogado.Id;
+
+                    contato = _contatoRepositorio.Atualizar(contato);
                     TempData["MensagemSucesso"] = "Contato alterado com sucesso"; 
                     return RedirectToAction("Index"); //ação de voltar para a página Index
                 }

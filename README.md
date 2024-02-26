@@ -26,3 +26,5 @@ Esse projeto foi desenvolvido utilizando:
 - Criptografia de senha do usuário
 - Redefinição de senha com envio de e-mail SMTP
 - Tela para alterar senha
+- Relacionamento entre tabelas Contato e Usuário
+    - Usuário só poderá ver os contatos que criou 
