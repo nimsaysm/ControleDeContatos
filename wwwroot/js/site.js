@@ -5,6 +5,26 @@
 $(document).ready(function () {
     getDataTable('#table-contatos');
     getDataTable('#table-usuarios');
+
+    $('#btn-total-contatos').click(function () {
+        var usuarioId = $(this).attr('usuario-id');
+        
+        //requisição via JS (ajax) na Controller para solicitar todos os contatos e mostrar na tela
+        $.ajax({
+            //método Get na Controller Usuario no método de Listar Usuario através do Id 
+            type: 'GET',
+            url: '/Usuario/ListarContatosPorUsuarioId/' + usuarioId, 
+            success: function(result){
+                $('#listaContatosUsuario').html(result);              
+                //parte de uma View -> guarda uma parte do HTML
+                $('#modalContatosUsuario').modal('toggle');
+                getDataTable('#table-contatos-usuario');
+          }});         
+    });
+
+    $('#btn-modal').click(function () {
+        $('#modalContatosUsuario').modal('toggle');
+    })
 });
 
 function getDataTable(idTabela) {

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ControleDeContatos.Data;
 using ControleDeContatos.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ControleDeContatos.Repositorio
 {
@@ -34,7 +35,9 @@ namespace ControleDeContatos.Repositorio
 
         public List<UsuarioModel> BuscarTodos()
         {
-            return _bancoContext.Usuarios.ToList();
+            return _bancoContext.Usuarios
+                .Include (x => x.Contatos)
+                .ToList();//.Include -> na consulta, irá incluir contatos que são filhos de UsuarioModel
         }
         
         public UsuarioModel Adicionar(UsuarioModel usuario)

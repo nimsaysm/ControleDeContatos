@@ -1,13 +1,14 @@
 @model List<UsuarioModel>
 @{
-    ViewData["Title"] = "Listagem de usuários";
+  ViewData["Title"] = "Listagem de usuários";
 }
 
 <div class="text-center">
 
   <br>
   <div class="d-grid gap-2 d-flex justify-content-end">
-    <a class="btn btn-primary" role="button" asp-controller="Usuario" asp-action="CriarUsuario">Adicionar novo usuário</a>
+    <a class="btn btn-primary" role="button" asp-controller="Usuario" asp-action="CriarUsuario">Adicionar novo
+      usuário</a>
   </div>
 
   <br>
@@ -31,7 +32,7 @@
 
   <br>
   <h1 class="display-4">Listagem de usuários</h1>
-  
+
   <br>
   <table class="table" id="table-usuarios">
     <thead>
@@ -41,11 +42,12 @@
         <th scope="col">Login</th>
         <th scope="col">Email</th>
         <th scope="col">Perfil</th>
+        <th scope="col">Total de Contatos</th>
         <th scope="col">Data de cadastro</th>
         <th scope="col"></th>
     </thead>
     <tbody>
-      @if(Model != null && Model.Any())
+      @if (Model != null && Model.Any())
       {
         foreach (UsuarioModel usuario in Model)
         {
@@ -54,12 +56,22 @@
             <td>@usuario.Nome</td>
             <td>@usuario.Login</td>
             <td>@usuario.Email</td>
-            <td>@(usuario.Perfil == ControleDeContatos.Enums.PerfilEnum.Admin ? "Administrador": "Padrão")</td>
+            <td>@(usuario.Perfil == ControleDeContatos.Enums.PerfilEnum.Admin ? "Administrador" : "Padrão")</td>
+            <td>
+              @* javascript: não manda para nenhum lugar *@
+              <a href="javascript:" usuario-id="@usuario.Id" class="btn btn-success btn-sm btn-total-contatos">
+                @* se, em contatos de usuário, não estiver vazio e tiver algum registro, irá fazer a contagem de registros.
+            Se não tiver nada, irá retornar 0 (lógica a ser testada : 0) *@
+                @(usuario.Contatos != null && usuario.Contatos.Any() ? usuario.Contatos.Count() : 0)
+              </a>
+            </td>
             <td>@usuario.DataCadastroUsuario</td>
             <td>
               <div class="btn-group" role="group">
-                  <a role="button" class="btn btn-primary" asp-route-id="@usuario.Id" asp-controller="Usuario" asp-action="EditarUsuario">Editar</a>
-                  <a role="button" class="btn btn-danger" asp-route-id="@usuario.Id" asp-controller="Usuario" asp-action="ApagarConfirmacao">Apagar</a>
+                <a role="button" class="btn btn-primary" asp-route-id="@usuario.Id" asp-controller="Usuario"
+                  asp-action="EditarUsuario">Editar</a>
+                <a role="button" class="btn btn-danger" asp-route-id="@usuario.Id" asp-controller="Usuario"
+                  asp-action="ApagarConfirmacao">Apagar</a>
               </div>
             </td>
           </tr>
@@ -67,5 +79,24 @@
       }
     </tbody>
   </table>
-</div>
 
+@* modal com os contatos do usuário que aparecerá ao clicar no botão da quantidade *@
+  <div id="modalContatosUsuario" class="modal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Listagem de Contatos</h5>
+          <button type="button" class="close" id="btn-modal" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div>
+            <div id="listaContatosUsuario"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
