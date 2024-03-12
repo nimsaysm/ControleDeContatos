@@ -29,3 +29,10 @@ Esse projeto foi desenvolvido utilizando:
 - Relacionamento entre tabelas Contato e Usuário
     - Usuário só poderá ver os contatos que criou
 - Modal utilizando JavaScript (ajax) e CSS para que seja possível ver quantidade de contatos criada por usuários e a lista desses contatos
+
+
+## 🖱️ Demonstração
+
+<p align="center">
+    <img src=".github/preview.gif" alt="Demonstração do projeto" width="100%" />
+</p>
