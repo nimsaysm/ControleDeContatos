@@ -37,6 +37,11 @@ namespace ControleDeContatos.Models
         //lista -> 1 usuário tem vários contatos
         public virtual List<ContatoModel> Contatos { get; set; }
 
+        public UsuarioModel()
+        {
+            Contatos = new List<ContatoModel>(); //ao criar o usuário, passa a lista de contatos como vazia para permitir a criação
+        }
+
         public bool SenhaValida(string senha)
         {
             //compara Senha informada pelo usuário com a senha preenchida no login

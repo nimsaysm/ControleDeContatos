@@ -6,7 +6,7 @@ $(document).ready(function () {
     getDataTable('#table-contatos');
     getDataTable('#table-usuarios');
 
-    $('#btn-total-contatos').click(function () {
+    $('.btn-total-contatos').click(function () {
         var usuarioId = $(this).attr('usuario-id');
         
         //requisição via JS (ajax) na Controller para solicitar todos os contatos e mostrar na tela
